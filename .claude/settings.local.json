@@ -1,8 +1,0 @@
-{
-  "permissions": {
-    "allow": [
-      "Bash(grep -E '\\\\.\\(yml|yaml|json|toml|cfg|conf\\)$')",
-      "WebFetch(domain:justimyhxu.github.io)"
-    ]
-  }
-}
