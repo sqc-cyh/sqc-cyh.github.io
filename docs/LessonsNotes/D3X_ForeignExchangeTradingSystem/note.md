@@ -1,0 +1,18 @@
+---
+
+title: Note
+
+hide:
+  #  - navigation # 显示右
+  #  - toc #显示左
+  #  - footer
+  #  - feedback  
+comments: true  #默认不开启评论
+
+---
+
+<h1 id="欢迎">Note</h1>
+
+## 1.基础知识
+* 货币对 Currency Pair：外汇交易中两种货币成对交易，称为一个货币对。根据计价标的的不同，两种货币分为基准货币和非基准货币
+  

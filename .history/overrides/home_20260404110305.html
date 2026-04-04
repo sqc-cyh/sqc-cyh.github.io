@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="aRQ99cP_tEGqXSc1a0A-wFHPUuOwJVag2pZ5BN5BIeI">
+    <meta name="description" content="{{ page.meta.name }} – Academic Homepage">
+    <title>{{ page.meta.name }}</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/academicons/1.9.4/css/academicons.min.css" crossorigin="anonymous" referrerpolicy="no-referrer">
+
+    <style>
+        /* ── Reset ── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        /* ── Design tokens ── */
+        :root {
+            --accent:      #58a7aa;
+            --accent-dark: #4a9294;
+            --accent-bg:   rgba(88, 167, 170, 0.08);
+            --text:        #1a1a1a;
+            --text-sub:    #555;
+            --text-muted:  #888;
+            --border:      #e8e8e8;
+            --bg:          #ffffff;
+            --bg-hover:    #f5f7f7;
+            --radius:      10px;
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        a { color: var(--accent); text-decoration: none; }
+        a:hover { text-decoration: underline; }
+
+        /* ════════════ NAVBAR ════════════ */
+        .navbar {
+            position: sticky;
+            top: 0;
+            z-index: 999;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-bottom: 1px solid var(--border);
+        }
+        .navbar-inner {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.05rem;
+            letter-spacing: -0.02em;
+            color: var(--text) !important;
+            transition: color 0.15s;
+        }
+        .navbar-brand:hover { color: var(--accent) !important; text-decoration: none; }
+
+        .navbar-links {
+            display: flex;
+            align-items: center;
+            gap: 0;
+            list-style: none;
+        }
+        .navbar-links li a {
+            color: var(--text-sub);
+            font-size: 0.875rem;
+            font-weight: 500;
+            padding: 6px 12px;
+            border-radius: 7px;
+            display: block;
+            transition: background 0.15s, color 0.15s;
+        }
+        .navbar-links li a:hover { background: var(--bg-hover); color: var(--text); text-decoration: none; }
+        .navbar-links .nav-notes a {
+            background: var(--accent);
+            color: #fff !important;
+            padding: 7px 18px;
+            border-radius: 24px;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin-left: 0.5rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            transition: background 0.15s, transform 0.1s;
+        }
+        .navbar-links .nav-notes a:hover { background: var(--accent-dark); transform: translateY(-1px); text-decoration: none; }
+
+        /* ════════════ PAGE ════════════ */
+        .page {
+            max-width: 920px;
+            margin: 0 auto;
+            padding: 0 2rem 5rem;
+        }
+
+        /* ════════════ ABOUT ════════════ */
+        .about { padding: 5rem 0 3.5rem; }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 3.8rem;
+            align-items: flex-start;
+        }
+
+        /* Photo */
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            object-position: center 8%;
+            display: block;
+            box-shadow: 0 8px 36px rgba(0, 0, 0, 0.13);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .profile-img:hover { transform: scale(1.025); box-shadow: 0 14px 44px rgba(0, 0, 0, 0.18); }
+
+        /* Info */
+        .profile-name {
+            font-size: 2.15rem;
+            font-weight: 700;
+            letter-spacing: -0.03em;
+            color: #111;
+            line-height: 1.15;
+            margin-bottom: 0.55rem;
+        }
+        .profile-pos {
+            font-size: 0.9rem;
+            color: var(--text-sub);
+            display: flex;
+            align-items: center;
+            gap: 0.45rem;
+            margin-bottom: 0.22rem;
+        }
+        .profile-pos i { color: var(--accent); font-size: 0.78em; width: 14px; text-align: center; flex-shrink: 0; }
+
+        /* Link badges */
+        .profile-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin: 1.25rem 0 1.7rem;
+        }
+        .btn-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+            padding: 5px 14px;
+            border: 1.5px solid var(--border);
+            border-radius: 20px;
+            font-size: 0.815rem;
+            font-weight: 500;
+            color: #444;
+            line-height: 1;
+            transition: border-color 0.15s, color 0.15s, background 0.15s;
+        }
+        .btn-link i, .btn-link .ai { font-size: 0.9em; }
+        .btn-link:hover { border-color: var(--accent); color: var(--accent); background: var(--accent-bg); text-decoration: none; }
+
+        /* Bio – rendered from page.content (markdown body) */
+        .bio p {
+            font-size: 0.95rem;
+            color: #333;
+            line-height: 1.82;
+            margin-bottom: 0.75rem;
+        }
+        .bio p:last-child { margin-bottom: 0; }
+        .bio strong { font-weight: 600; color: #111; }
+
+        /* ════════════ SECTIONS ════════════ */
+        .section {
+            padding: 2.8rem 0;
+            border-top: 1px solid var(--border);
+        }
+        .section-title {
+            font-size: 1.18rem;
+            font-weight: 700;
+            color: #111;
+            letter-spacing: -0.015em;
+            margin-bottom: 1.6rem;
+            display: flex;
+            align-items: center;
+            gap: 0.65rem;
+        }
+        .section-title::before {
+            content: '';
+            display: block;
+            width: 3.5px;
+            height: 1.1em;
+            background: var(--accent);
+            border-radius: 2px;
+            flex-shrink: 0;
+        }
+
+        /* ════════════ ENTRIES ════════════ */
+        .entry-list { display: flex; flex-direction: column; }
+        .entry {
+            display: flex;
+            gap: 1.35rem;
+            align-items: flex-start;
+            padding: 0.9rem 0.85rem;
+            border-radius: var(--radius);
+            transition: background 0.15s;
+        }
+        .entry:hover { background: var(--bg-hover); }
+
+        /* Logo */
+        .entry-logo {
+            flex-shrink: 0;
+            width: 72px;
+            height: auto;
+            display: block;
+        }
+
+        /* Entry text */
+        .entry-body { flex: 1; min-width: 0; }
+        .entry-org {
+            font-weight: 600;
+            font-size: 0.97rem;
+            color: #111;
+            margin-bottom: 0.13rem;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.35rem;
+        }
+        .entry-role { font-size: 0.87rem; color: var(--text-sub); margin-bottom: 0.08rem; }
+        .entry-meta { font-size: 0.81rem; color: var(--text-muted); }
+
+        /* Tags */
+        .tag {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.69rem;
+            font-weight: 600;
+            padding: 1px 8px;
+            border-radius: 10px;
+            line-height: 1.7;
+        }
+        .tag-now  { background: rgba(34, 197, 94, 0.1);  color: #15803d; }
+        .tag-soon { background: var(--accent-bg); color: var(--accent); }
+
+        /* ════════════ FOOTER ════════════ */
+        .footer { border-top: 1px solid var(--border); padding: 2rem 2rem; text-align: center; }
+        .footer p { font-size: 0.78rem; color: var(--text-muted); }
+        .footer a  { color: var(--text-muted); }
+        .footer a:hover { color: var(--accent); text-decoration: none; }
+
+        /* ════════════ ANIMATIONS ════════════ */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(18px); }
+            to   { opacity: 1; transform: translateY(0); }
+        }
+        .about   { animation: fadeUp 0.55s ease both; }
+        .section { animation: fadeUp 0.55s ease both; }
+        .section:nth-of-type(1) { animation-delay: 0.08s; }
+        .section:nth-of-type(2) { animation-delay: 0.16s; }
+
+        /* ════════════ RESPONSIVE ════════════ */
+        @media (max-width: 640px) {
+            .about-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+            .profile-img { width: 150px; height: 150px; margin: 0 auto; }
+            .profile-pos { justify-content: center; }
+            .profile-links { justify-content: center; }
+            .page { padding: 0 1.2rem 4rem; }
+            .navbar-inner { padding: 0 1.2rem; }
+            .navbar-links li:not(.nav-notes) { display: none; }
+        }
+    </style>
+</head>
+<body>
+
+{# ═══════════════════ NAVBAR ═══════════════════ #}
+<nav class="navbar">
+    <div class="navbar-inner">
+        <a class="navbar-brand" href="#">{{ page.meta.name }}</a>
+        <ul class="navbar-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#education">Education</a></li>
+            <li class="nav-notes">
+                <a href="/home/">
+                    <i class="fas fa-book-open"></i> My Notes
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+
+{# ═══════════════════ PAGE ═══════════════════ #}
+<main class="page">
+
+    {# ─── ABOUT ─── #}
+    <section class="about" id="about">
+        <div class="about-grid">
+
+            <div>
+                <img class="profile-img"
+                     src="images/profiel_photo.jpg"
+                     alt="{{ page.meta.name }}">
+            </div>
+
+            <div>
+                <h1 class="profile-name">{{ page.meta.name }}</h1>
+
+                <div class="profile-pos">
+                    <i class="fas fa-graduation-cap"></i>
+                    Undergraduate Researcher · Zhejiang University
+                </div>
+                <div class="profile-pos">
+                    <i class="fas fa-map-marker-alt"></i>
+                    Hangzhou, China
+                </div>
+
+                {# Social / contact badges #}
+                <div class="profile-links">
+                    <a class="btn-link" href="mailto:{{ page.meta.email }}">
+                        <i class="fas fa-envelope"></i> Email
+                    </a>
+                    {% if page.meta.scholar %}
+                    <a class="btn-link" href="{{ page.meta.scholar }}" target="_blank" rel="noopener">
+                        <i class="ai ai-google-scholar"></i> Google Scholar
+                    </a>
+                    {% endif %}
+                    {% if page.meta.github %}
+                    <a class="btn-link" href="https://github.com/{{ page.meta.github }}" target="_blank" rel="noopener">
+                        <i class="fab fa-github"></i> GitHub
+                    </a>
+                    {% endif %}
+                </div>
+
+                {# Bio: rendered from page.meta.bio list (each item = one paragraph) #}
+                <div class="bio">
+                    {% for para in page.meta.bio %}
+                    <p>{{ para | safe }}</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </section>
+
+    {# ─── EXPERIENCE ─── #}
+    {% if page.meta.experience %}
+    <section class="section" id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="entry-list">
+            {% for item in page.meta.experience %}
+            <div class="entry">
+                <img class="entry-logo"
+                     src="{{ item.logo }}"
+                     alt="{{ item.org }}"
+                     onerror="this.style.display='none';">
+                <div class="entry-body">
+                    <div class="entry-org">
+                        {{ item.org }}
+                        {% if item.current %}<span class="tag tag-now">Current</span>{% endif %}
+                    </div>
+                    <div class="entry-role">{{ item.role }}</div>
+                    <div class="entry-meta">
+                        {% if item.mentor %}Mentor: {{ item.mentor }}{% endif %}
+                        {% if item.advisor %}Advisor:
+                            {% if item.advisor_url %}<a href="{{ item.advisor_url }}" target="_blank" rel="noopener">{{ item.advisor }}</a>
+                            {% else %}{{ item.advisor }}{% endif %}
+                        {% endif %}
+                        {% if item.period %}&nbsp;·&nbsp;{{ item.period }}{% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+    {# ─── EDUCATION ─── #}
+    {% if page.meta.education %}
+    <section class="section" id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="entry-list">
+            {% for item in page.meta.education %}
+            <div class="entry">
+                <img class="entry-logo"
+                     src="{{ item.logo }}"
+                     alt="{{ item.org }}"
+                     onerror="this.style.display='none';">
+                <div class="entry-body">
+                    <div class="entry-org">
+                        {{ item.org }}
+                        {% if item.upcoming %}<span class="tag tag-soon">Upcoming</span>{% endif %}
+                    </div>
+                    <div class="entry-role">{{ item.degree }}</div>
+                    <div class="entry-meta">
+                        {% if item.advisor %}
+                            Supervisor: {{ item.advisor }}
+                            {% if item.period %}&nbsp;·&nbsp;{{ item.period }}{% endif %}
+                        {% elif item.period %}
+                            {{ item.period }}
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
+</main>
+
+{# ═══════════════════ FOOTER ═══════════════════ #}
+<footer class="footer">
+    <p>
+        &copy; 2026 {{ page.meta.name }}
+        &nbsp;&middot;&nbsp;
+        <a href="/home/">Course Notes</a>
+        &nbsp;&middot;&nbsp;
+        <a href="mailto:{{ page.meta.email }}">{{ page.meta.email }}</a>
+    </p>
+</footer>
+
+</body>
+</html>
