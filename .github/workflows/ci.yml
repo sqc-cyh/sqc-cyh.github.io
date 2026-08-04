@@ -26,4 +26,15 @@ jobs:
       - run: pip install mkdocs-material
       - run: pip install mkdocs-blogging-plugin  # 记得安装其他依赖的库
       - run: pip install mkdocs-statistics-plugin
+      - name: Generate GA4 public statistics
+        env:
+          GA4_PROPERTY_ID: ${{ vars.GA4_PROPERTY_ID }}
+          GA4_SERVICE_ACCOUNT_JSON: ${{ secrets.GA4_SERVICE_ACCOUNT_JSON }}
+        run: |
+          if [ -z "$GA4_PROPERTY_ID" ] || [ -z "$GA4_SERVICE_ACCOUNT_JSON" ]; then
+            echo "GA4 credentials are not configured; skipping statistics generation."
+            exit 0
+          fi
+          pip install google-analytics-data
+          python scripts/update_ga_stats.py docs/analytics.json
       - run: mkdocs gh-deploy --force
