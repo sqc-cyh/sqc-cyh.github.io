@@ -42,7 +42,7 @@ def main() -> None:
     property_name = f"properties/{property_id}"
     stats = {
         "today": page_views(client, property_name, "today"),
-        "total": page_views(client, property_name, "2000-01-01"),
+        "total": page_views(client, property_name, "2015-08-14"),
         "updatedAt": datetime.now(timezone.utc).isoformat(),
     }
 
