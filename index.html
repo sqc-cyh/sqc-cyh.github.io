@@ -245,6 +245,87 @@
         .entry-role { font-size: 0.87rem; color: var(--text-sub); margin-bottom: 0.08rem; }
         .entry-meta { font-size: 0.81rem; color: var(--text-muted); }
 
+        /* ════════════ PUBLICATIONS ════════════ */
+        .publication-list { display: flex; flex-direction: column; gap: 1.1rem; }
+        .publication {
+            display: grid;
+            grid-template-columns: 210px minmax(0, 1fr);
+            gap: 1.35rem;
+            padding: 0.95rem;
+            border: 1px solid transparent;
+            border-radius: var(--radius);
+            transition: background 0.15s, border-color 0.15s, transform 0.15s;
+        }
+        .publication:hover {
+            background: var(--bg-hover);
+            border-color: var(--border);
+            transform: translateY(-1px);
+        }
+        .publication-media {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            border-radius: 7px;
+            background: #edf2f2;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+        .publication-media img,
+        .publication-media video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .publication-media img { transition: transform 0.25s ease; }
+        .publication-media:hover img { transform: scale(1.035); }
+        .publication-body { min-width: 0; padding: 0.03rem 0; }
+        .publication-title {
+            color: #111;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .publication-title:hover { color: var(--accent); text-decoration: none; }
+        .publication-authors {
+            margin-top: 0.28rem;
+            color: var(--text-sub);
+            font-size: 0.83rem;
+            line-height: 1.62;
+        }
+        .publication-authors strong { color: #111; font-weight: 700; }
+        .publication-venue {
+            margin-top: 0.22rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+        .publication-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 0.65rem;
+        }
+        .publication-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.32rem;
+            padding: 3px 9px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            color: #555;
+            font-size: 0.75rem;
+            font-weight: 500;
+            line-height: 1.35;
+            transition: color 0.15s, border-color 0.15s, background 0.15s;
+        }
+        .publication-link:hover {
+            border-color: var(--accent);
+            background: var(--accent-bg);
+            color: var(--accent);
+            text-decoration: none;
+        }
+
         /* Tags */
         .tag {
             display: inline-flex;
@@ -273,10 +354,22 @@
         .honor-year  { font-size: 0.83rem; color: var(--text-muted); flex-shrink: 0; margin-left: 1rem; }
 
         /* ════════════ FOOTER ════════════ */
-        .footer { border-top: 1px solid var(--border); padding: 2rem 2rem; text-align: center; }
+        .footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; }
         .footer p { font-size: 0.78rem; color: var(--text-muted); }
         .footer a  { color: var(--text-muted); }
         .footer a:hover { color: var(--accent); text-decoration: none; }
+        .visitor-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.4rem 1rem;
+            margin-top: 0.7rem;
+            color: var(--text-muted);
+            font-size: 0.74rem;
+        }
+        .visitor-stats span { display: inline-flex; align-items: center; gap: 0.3rem; }
+        .visitor-stats i { color: var(--accent); }
+        .visitor-stats strong { color: var(--text-sub); font-weight: 600; font-variant-numeric: tabular-nums; }
 
         /* ════════════ ANIMATIONS ════════════ */
         @keyframes fadeUp {
@@ -294,6 +387,8 @@
             .profile-img { width: 150px; height: 150px; margin: 0 auto; }
             .profile-pos { justify-content: center; }
             .profile-links { justify-content: center; }
+            .publication { grid-template-columns: 1fr; gap: 0.9rem; padding: 0.7rem; }
+            .publication-media { max-width: 100%; }
             .page { padding: 0 1.2rem 4rem; }
             .navbar-inner { padding: 0 1.2rem; }
             .navbar-links li:not(.nav-notes) { display: none; }
@@ -308,6 +403,7 @@
         <a class="navbar-brand" href="#">Yihang Chen</a>
         <ul class="navbar-links">
             <li><a href="#about">About</a></li>
+            <li><a href="#publications">Publications</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#education">Education</a></li>
             <li class="nav-notes">
@@ -335,22 +431,13 @@
             <div>
                 <h1 class="profile-name">Yihang Chen</h1>
 
-                <div class="profile-pos">
-                    <i class="fas fa-graduation-cap"></i>
-                    Undergraduate Researcher · Zhejiang University
-                </div>
-                <div class="profile-pos">
-                    <i class="fas fa-map-marker-alt"></i>
-                    Hangzhou, China
-                </div>
-
                 
                 <div class="profile-links">
                     <a class="btn-link" href="mailto:yihang.chen@zju.edu.cn">
                         <i class="fas fa-envelope"></i> Email
                     </a>
                     
-                    <a class="btn-link" href="https://scholar.google.com" target="_blank" rel="noopener">
+                    <a class="btn-link" href="https://scholar.google.com/citations?hl=zh-CN&user=60Q-Oh8AAAAJ" target="_blank" rel="noopener">
                         <i class="ai ai-google-scholar"></i> Google Scholar
                     </a>
                     
@@ -364,7 +451,7 @@
                 
                 <div class="bio">
                     
-                    <p>I am a final-year undergraduate at Zhejiang University (ZJU) majoring in Software Engineering. In Fall 2026, I will join the Hong Kong University of Science and Technology (HKUST) as a Ph.D. student under the supervision of <a href="https://justimyhxu.github.io/" target="_blank" rel="noopener">Prof. Yinghao Xu</a>. Currently, I am a Research Intern at Ant Group, mentored by <a href="https://xuenan.net/" target="_blank" rel="noopener">Dr. Nan Xue</a>.</p>
+                    <p>I am a first-year Ph.D. student at the Hong Kong University of Science and Technology (HKUST), advised by <a href="https://justimyhxu.github.io/" target="_blank" rel="noopener">Prof. Yinghao Xu</a>. I received my B.Eng. degree in Software Engineering from Zhejiang University (ZJU). I am also a Research Intern at Ant Group, mentored by <a href="https://xuenan.net/" target="_blank" rel="noopener">Dr. Nan Xue</a>.</p>
                     
                     <p>Previously, I gained research experience at the State Key Lab of CAD&amp;CG with <a href="http://www.cad.zju.edu.cn/home/zhpcui/" target="_blank" rel="noopener">Prof. Zhaopeng Cui</a> and at the International Design Institute (IDI) with <a href="https://person.zju.edu.cn/sly" target="_blank" rel="noopener">Prof. Lingyun Sun</a>.</p>
                     
@@ -372,6 +459,113 @@
             </div>
         </div>
     </section>
+
+    
+    
+    <section class="section" id="publications">
+        <h2 class="section-title">Publications</h2>
+        <div class="publication-list">
+            
+            <article class="publication">
+                
+                <div class="publication-media publication-video" aria-label="Autoplaying demo for MeGAS: Thermomechanical Dynamic Gaussian Splatting for Thermophysical Scene Editing">
+                    <video autoplay muted loop playsinline preload="metadata" poster="https://zju3dv.github.io/MeGAS/sources/images/teaser.png" aria-label="Autoplaying demo for MeGAS: Thermomechanical Dynamic Gaussian Splatting for Thermophysical Scene Editing">
+                        <source src="https://zju3dv.github.io/MeGAS/sources/videos/teaser.mp4" type="video/mp4">
+                    </video>
+                </div>
+                
+                <div class="publication-body">
+                    <a class="publication-title" href="https://arxiv.org/abs/2606.23455" target="_blank" rel="noopener">MeGAS: Thermomechanical Dynamic Gaussian Splatting for Thermophysical Scene Editing</a>
+                    <div class="publication-authors">Zesong Yang, Yuanhang Lei, Liyuan Cui, <strong>Yihang Chen</strong>, Jiaer Huang, Boming Zhao, Peter Yichen Chen, Hujun Bao, Zhaopeng Cui</div>
+                    <div class="publication-venue">ECCV 2026</div>
+                    <div class="publication-links">
+                        <a class="publication-link" href="https://arxiv.org/abs/2606.23455" target="_blank" rel="noopener">
+                            <i class="ai ai-arxiv"></i> Paper
+                        </a>
+                        
+                        <a class="publication-link" href="https://zju3dv.github.io/MeGAS/" target="_blank" rel="noopener">
+                            <i class="fas fa-globe"></i> Website
+                        </a>
+                        
+                        
+                        <a class="publication-link" href="https://github.com/zju3dv/MeGAS" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        
+                        
+                        <a class="publication-link" href="https://youtu.be/wAaGvaGSkGU" target="_blank" rel="noopener">
+                            <i class="fas fa-circle-play"></i> Demo
+                        </a>
+                        
+                    </div>
+                </div>
+            </article>
+            
+            <article class="publication">
+                
+                <div class="publication-media publication-video" aria-label="Autoplaying demo for Geometric Context Transformer for Streaming 3D Reconstruction">
+                    <video autoplay muted loop playsinline preload="metadata" poster="https://raw.githubusercontent.com/Robbyant/lingbot-map/main/assets/teaser.webp" aria-label="Autoplaying demo for Geometric Context Transformer for Streaming 3D Reconstruction">
+                        <source src="https://gw.alipayobjects.com/v/huamei_vaouhm/afts/video/rhbsRJeVl1UAAAAAhIAAAAgAfoeUAQBr" type="video/mp4">
+                    </video>
+                </div>
+                
+                <div class="publication-body">
+                    <a class="publication-title" href="https://arxiv.org/abs/2604.14141" target="_blank" rel="noopener">Geometric Context Transformer for Streaming 3D Reconstruction</a>
+                    <div class="publication-authors">Lin-Zhuo Chen, Jian Gao, <strong>Yihang Chen</strong>, Ka Leong Cheng, Yipengjing Sun, Liangxiao Hu, Nan Xue, Xing Zhu, Yujun Shen, Yao Yao, Yinghao Xu</div>
+                    <div class="publication-venue">ECCV 2026</div>
+                    <div class="publication-links">
+                        <a class="publication-link" href="https://arxiv.org/abs/2604.14141" target="_blank" rel="noopener">
+                            <i class="ai ai-arxiv"></i> Paper
+                        </a>
+                        
+                        <a class="publication-link" href="https://technology.robbyant.com/lingbot-map" target="_blank" rel="noopener">
+                            <i class="fas fa-globe"></i> Website
+                        </a>
+                        
+                        
+                        <a class="publication-link" href="https://github.com/Robbyant/lingbot-map" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+            </article>
+            
+            <article class="publication">
+                
+                <div class="publication-media publication-video" aria-label="Autoplaying demo for Advancing Open-source World Models">
+                    <video autoplay muted loop playsinline preload="metadata" poster="https://raw.githubusercontent.com/Robbyant/lingbot-world/main/assets/teaser.png" aria-label="Autoplaying demo for Advancing Open-source World Models">
+                        <source src="https://gw.alipayobjects.com/v/huamei_u94ywh/afts/video/8BJMTq46GEMAAAAAggAAAAgAfoeUAQBr" type="video/mp4">
+                    </video>
+                </div>
+                
+                <div class="publication-body">
+                    <a class="publication-title" href="https://arxiv.org/abs/2601.20540" target="_blank" rel="noopener">Advancing Open-source World Models</a>
+                    <div class="publication-authors">Robbyant Team, Zelin Gao, Qiuyu Wang, Yanhong Zeng, Jiapeng Zhu, Ka Leong Cheng, Yixuan Li, Hanlin Wang, Yinghao Xu, Shuailei Ma, <strong>Yihang Chen</strong>, Jie Liu, Yansong Cheng, Yao Yao, Jiayi Zhu, Yihao Meng, Kecheng Zheng, Qingyan Bai, Jingye Chen, Zehong Shen, Yue Yu, Xing Zhu, Yujun Shen, Hao Ouyang</div>
+                    <div class="publication-venue">arXiv preprint arXiv:2601.20540</div>
+                    <div class="publication-links">
+                        <a class="publication-link" href="https://arxiv.org/abs/2601.20540" target="_blank" rel="noopener">
+                            <i class="ai ai-arxiv"></i> Paper
+                        </a>
+                        
+                        <a class="publication-link" href="https://technology.robbyant.com/lingbot-world" target="_blank" rel="noopener">
+                            <i class="fas fa-globe"></i> Website
+                        </a>
+                        
+                        
+                        <a class="publication-link" href="https://github.com/Robbyant/lingbot-world" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+            </article>
+            
+        </div>
+    </section>
+    
 
     
     
@@ -387,7 +581,6 @@
                 <div class="entry-body">
                     <div class="entry-org">
                         Ant Group
-                        <span class="tag tag-now">Current</span>
                     </div>
                     <div class="entry-role">Research Intern</div>
                     <div class="entry-meta">
@@ -416,13 +609,12 @@
                 <div class="entry-body">
                     <div class="entry-org">
                         Hong Kong University of Science and Technology
-                        <span class="tag tag-soon">Upcoming</span>
                     </div>
                     <div class="entry-role">Ph.D. in Computer Science & Engineering</div>
                     <div class="entry-meta">
                         
                             Supervisor: Prof. Yinghao Xu
-                            &nbsp;·&nbsp;Fall 2026 –
+                            &nbsp;·&nbsp;2026 – Present
                         
                     </div>
                 </div>
@@ -436,7 +628,6 @@
                 <div class="entry-body">
                     <div class="entry-org">
                         Zhejiang University
-                        
                     </div>
                     <div class="entry-role">B.Eng. in Software Engineering</div>
                     <div class="entry-meta">
@@ -487,7 +678,60 @@
         &nbsp;&middot;&nbsp;
         <a href="mailto:yihang.chen@zju.edu.cn">yihang.chen@zju.edu.cn</a>
     </p>
+    <div class="visitor-stats" aria-label="Homepage page view statistics">
+        <span><i class="fas fa-calendar-day" aria-hidden="true"></i> Today <strong id="today-visits">—</strong></span>
+        <span><i class="fas fa-chart-line" aria-hidden="true"></i> Total <strong id="total-visits">—</strong></span>
+    </div>
 </footer>
+
+<script>
+    document.querySelectorAll('.publication-video video').forEach((video) => {
+        const startVideo = () => video.play().catch(() => {});
+        video.addEventListener('canplay', startVideo, { once: true });
+        startVideo();
+    });
+
+    (() => {
+        const api = 'https://page-views-api.ratneshc.com/api/v1';
+        const site = window.location.hostname;
+        const formatter = new Intl.DateTimeFormat('en-CA', {
+            timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit'
+        });
+        const dateParts = Object.fromEntries(
+            formatter.formatToParts(new Date()).map(({ type, value }) => [type, value])
+        );
+        const todayPath = '/__visitor-stats__/' + [dateParts.year, dateParts.month, dateParts.day].join('-');
+
+        async function trackAndGetViews(path) {
+            const query = 'site=' + encodeURIComponent(site) + '&path=' + encodeURIComponent(path);
+            const tracked = await fetch(api + '/track?' + query, { keepalive: true });
+            if (!tracked.ok) throw new Error('Visitor tracking request failed');
+            const response = await fetch(api + '/views?' + query, { cache: 'no-store' });
+            if (!response.ok) throw new Error('Visitor statistics request failed');
+            const payload = await response.json();
+            return Number(payload.views);
+        }
+
+        async function updateCounter() {
+            try {
+                const [today, total] = await Promise.all([
+                    trackAndGetViews(todayPath),
+                    trackAndGetViews('/')
+                ]);
+                if (Number.isFinite(today)) {
+                    document.getElementById('today-visits').textContent = today.toLocaleString('en-US');
+                }
+                if (Number.isFinite(total)) {
+                    document.getElementById('total-visits').textContent = total.toLocaleString('en-US');
+                }
+            } catch (error) {
+                // Keep the fallback dash if the public statistics service is unavailable.
+            }
+        }
+
+        updateCounter();
+    })();
+</script>
 
 </body>
 </html>
