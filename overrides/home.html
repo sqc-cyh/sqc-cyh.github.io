@@ -616,22 +616,40 @@
     });
 
     (() => {
-        const formatCount = (value) => {
-            const count = Number(value);
-            return Number.isFinite(count) && count >= 0 ? count.toLocaleString('en-US') : null;
-        };
+        const api = 'https://page-views-api.ratneshc.com/api/v1';
+        const site = window.location.hostname;
+        const formatter = new Intl.DateTimeFormat('en-CA', {
+            timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit'
+        });
+        const dateParts = Object.fromEntries(
+            formatter.formatToParts(new Date()).map(({ type, value }) => [type, value])
+        );
+        const todayPath = '/__visitor-stats__/' + [dateParts.year, dateParts.month, dateParts.day].join('-');
+
+        async function trackAndGetViews(path) {
+            const query = 'site=' + encodeURIComponent(site) + '&path=' + encodeURIComponent(path);
+            const tracked = await fetch(api + '/track?' + query, { keepalive: true });
+            if (!tracked.ok) throw new Error('Visitor tracking request failed');
+            const response = await fetch(api + '/views?' + query, { cache: 'no-store' });
+            if (!response.ok) throw new Error('Visitor statistics request failed');
+            const payload = await response.json();
+            return Number(payload.views);
+        }
 
         async function updateCounter() {
             try {
-                const response = await fetch('/analytics.json', { cache: 'no-store' });
-                if (!response.ok) throw new Error('Analytics statistics are unavailable');
-                const stats = await response.json();
-                const today = formatCount(stats.today);
-                const total = formatCount(stats.total);
-                if (today !== null) document.getElementById('today-visits').textContent = today;
-                if (total !== null) document.getElementById('total-visits').textContent = total;
+                const [today, total] = await Promise.all([
+                    trackAndGetViews(todayPath),
+                    trackAndGetViews('/')
+                ]);
+                if (Number.isFinite(today)) {
+                    document.getElementById('today-visits').textContent = today.toLocaleString('en-US');
+                }
+                if (Number.isFinite(total)) {
+                    document.getElementById('total-visits').textContent = total.toLocaleString('en-US');
+                }
             } catch (error) {
-                // Keep the fallback dash until GitHub Actions publishes the first GA4 report.
+                // Keep the fallback dash if the real-time statistics service is unavailable.
             }
         }
 
