@@ -245,6 +245,87 @@
         .entry-role { font-size: 0.87rem; color: var(--text-sub); margin-bottom: 0.08rem; }
         .entry-meta { font-size: 0.81rem; color: var(--text-muted); }
 
+        /* ════════════ PUBLICATIONS ════════════ */
+        .publication-list { display: flex; flex-direction: column; gap: 1.1rem; }
+        .publication {
+            display: grid;
+            grid-template-columns: 210px minmax(0, 1fr);
+            gap: 1.35rem;
+            padding: 0.95rem;
+            border: 1px solid transparent;
+            border-radius: var(--radius);
+            transition: background 0.15s, border-color 0.15s, transform 0.15s;
+        }
+        .publication:hover {
+            background: var(--bg-hover);
+            border-color: var(--border);
+            transform: translateY(-1px);
+        }
+        .publication-media {
+            position: relative;
+            display: block;
+            overflow: hidden;
+            aspect-ratio: 16 / 9;
+            border-radius: 7px;
+            background: #edf2f2;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+        }
+        .publication-media img,
+        .publication-media video {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .publication-media img { transition: transform 0.25s ease; }
+        .publication-media:hover img { transform: scale(1.035); }
+        .publication-body { min-width: 0; padding: 0.03rem 0; }
+        .publication-title {
+            color: #111;
+            font-size: 1rem;
+            font-weight: 600;
+            line-height: 1.4;
+        }
+        .publication-title:hover { color: var(--accent); text-decoration: none; }
+        .publication-authors {
+            margin-top: 0.28rem;
+            color: var(--text-sub);
+            font-size: 0.83rem;
+            line-height: 1.62;
+        }
+        .publication-authors strong { color: #111; font-weight: 700; }
+        .publication-venue {
+            margin-top: 0.22rem;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+            font-style: italic;
+        }
+        .publication-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.45rem;
+            margin-top: 0.65rem;
+        }
+        .publication-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.32rem;
+            padding: 3px 9px;
+            border: 1px solid var(--border);
+            border-radius: 5px;
+            color: #555;
+            font-size: 0.75rem;
+            font-weight: 500;
+            line-height: 1.35;
+            transition: color 0.15s, border-color 0.15s, background 0.15s;
+        }
+        .publication-link:hover {
+            border-color: var(--accent);
+            background: var(--accent-bg);
+            color: var(--accent);
+            text-decoration: none;
+        }
+
         /* Tags */
         .tag {
             display: inline-flex;
@@ -273,10 +354,22 @@
         .honor-year  { font-size: 0.83rem; color: var(--text-muted); flex-shrink: 0; margin-left: 1rem; }
 
         /* ════════════ FOOTER ════════════ */
-        .footer { border-top: 1px solid var(--border); padding: 2rem 2rem; text-align: center; }
+        .footer { border-top: 1px solid var(--border); padding: 2rem; text-align: center; }
         .footer p { font-size: 0.78rem; color: var(--text-muted); }
         .footer a  { color: var(--text-muted); }
         .footer a:hover { color: var(--accent); text-decoration: none; }
+        .visitor-stats {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.4rem 1rem;
+            margin-top: 0.7rem;
+            color: var(--text-muted);
+            font-size: 0.74rem;
+        }
+        .visitor-stats span { display: inline-flex; align-items: center; gap: 0.3rem; }
+        .visitor-stats i { color: var(--accent); }
+        .visitor-stats strong { color: var(--text-sub); font-weight: 600; font-variant-numeric: tabular-nums; }
 
         /* ════════════ ANIMATIONS ════════════ */
         @keyframes fadeUp {
@@ -294,6 +387,8 @@
             .profile-img { width: 150px; height: 150px; margin: 0 auto; }
             .profile-pos { justify-content: center; }
             .profile-links { justify-content: center; }
+            .publication { grid-template-columns: 1fr; gap: 0.9rem; padding: 0.7rem; }
+            .publication-media { max-width: 100%; }
             .page { padding: 0 1.2rem 4rem; }
             .navbar-inner { padding: 0 1.2rem; }
             .navbar-links li:not(.nav-notes) { display: none; }
@@ -308,6 +403,7 @@
         <a class="navbar-brand" href="#">{{ page.meta.name }}</a>
         <ul class="navbar-links">
             <li><a href="#about">About</a></li>
+            <li><a href="#publications">Publications</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#education">Education</a></li>
             <li class="nav-notes">
@@ -334,15 +430,6 @@
 
             <div>
                 <h1 class="profile-name">{{ page.meta.name }}</h1>
-
-                <div class="profile-pos">
-                    <i class="fas fa-graduation-cap"></i>
-                    Undergraduate Researcher · Zhejiang University
-                </div>
-                <div class="profile-pos">
-                    <i class="fas fa-map-marker-alt"></i>
-                    Hangzhou, China
-                </div>
 
                 {# Social / contact badges #}
                 <div class="profile-links">
@@ -371,6 +458,55 @@
         </div>
     </section>
 
+    {# ─── PUBLICATIONS ─── #}
+    {% if page.meta.publications %}
+    <section class="section" id="publications">
+        <h2 class="section-title">Publications</h2>
+        <div class="publication-list">
+            {% for item in page.meta.publications %}
+            <article class="publication">
+                {% if item.video_url %}
+                <div class="publication-media publication-video" aria-label="Autoplaying demo for {{ item.title }}">
+                    <video autoplay muted loop playsinline preload="metadata" poster="{{ item.image }}" aria-label="Autoplaying demo for {{ item.title }}">
+                        <source src="{{ item.video_url }}" type="video/mp4">
+                    </video>
+                </div>
+                {% else %}
+                <a class="publication-media" href="{{ item.website_url or item.paper_url }}" target="_blank" rel="noopener" aria-label="Open preview for {{ item.title }}">
+                    <img src="{{ item.image }}" alt="{{ item.image_alt or item.title }}" loading="lazy">
+                </a>
+                {% endif %}
+                <div class="publication-body">
+                    <a class="publication-title" href="{{ item.paper_url }}" target="_blank" rel="noopener">{{ item.title }}</a>
+                    <div class="publication-authors">{{ item.authors | safe }}</div>
+                    <div class="publication-venue">{{ item.venue }}</div>
+                    <div class="publication-links">
+                        <a class="publication-link" href="{{ item.paper_url }}" target="_blank" rel="noopener">
+                            <i class="ai ai-arxiv"></i> Paper
+                        </a>
+                        {% if item.website_url %}
+                        <a class="publication-link" href="{{ item.website_url }}" target="_blank" rel="noopener">
+                            <i class="fas fa-globe"></i> Website
+                        </a>
+                        {% endif %}
+                        {% if item.code_url %}
+                        <a class="publication-link" href="{{ item.code_url }}" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        {% endif %}
+                        {% if item.demo_url %}
+                        <a class="publication-link" href="{{ item.demo_url }}" target="_blank" rel="noopener">
+                            <i class="fas fa-circle-play"></i> Demo
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+            </article>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+
     {# ─── EXPERIENCE ─── #}
     {% if page.meta.experience %}
     <section class="section" id="experience">
@@ -385,7 +521,6 @@
                 <div class="entry-body">
                     <div class="entry-org">
                         {{ item.org }}
-                        {% if item.current %}<span class="tag tag-now">Current</span>{% endif %}
                     </div>
                     <div class="entry-role">{{ item.role }}</div>
                     <div class="entry-meta">
@@ -417,7 +552,6 @@
                 <div class="entry-body">
                     <div class="entry-org">
                         {{ item.org }}
-                        {% if item.upcoming %}<span class="tag tag-soon">Upcoming</span>{% endif %}
                     </div>
                     <div class="entry-role">{{ item.degree }}</div>
                     <div class="entry-meta">
@@ -461,7 +595,60 @@
         &nbsp;&middot;&nbsp;
         <a href="mailto:{{ page.meta.email }}">{{ page.meta.email }}</a>
     </p>
+    <div class="visitor-stats" aria-label="Homepage page view statistics">
+        <span><i class="fas fa-calendar-day" aria-hidden="true"></i> Today <strong id="today-visits">—</strong></span>
+        <span><i class="fas fa-chart-line" aria-hidden="true"></i> Total <strong id="total-visits">—</strong></span>
+    </div>
 </footer>
+
+<script>
+    document.querySelectorAll('.publication-video video').forEach((video) => {
+        const startVideo = () => video.play().catch(() => {});
+        video.addEventListener('canplay', startVideo, { once: true });
+        startVideo();
+    });
+
+    (() => {
+        const api = 'https://page-views-api.ratneshc.com/api/v1';
+        const site = window.location.hostname;
+        const formatter = new Intl.DateTimeFormat('en-CA', {
+            timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit'
+        });
+        const dateParts = Object.fromEntries(
+            formatter.formatToParts(new Date()).map(({ type, value }) => [type, value])
+        );
+        const todayPath = '/__visitor-stats__/' + [dateParts.year, dateParts.month, dateParts.day].join('-');
+
+        async function trackAndGetViews(path) {
+            const query = 'site=' + encodeURIComponent(site) + '&path=' + encodeURIComponent(path);
+            const tracked = await fetch(api + '/track?' + query, { keepalive: true });
+            if (!tracked.ok) throw new Error('Visitor tracking request failed');
+            const response = await fetch(api + '/views?' + query, { cache: 'no-store' });
+            if (!response.ok) throw new Error('Visitor statistics request failed');
+            const payload = await response.json();
+            return Number(payload.views);
+        }
+
+        async function updateCounter() {
+            try {
+                const [today, total] = await Promise.all([
+                    trackAndGetViews(todayPath),
+                    trackAndGetViews('/')
+                ]);
+                if (Number.isFinite(today)) {
+                    document.getElementById('today-visits').textContent = today.toLocaleString('en-US');
+                }
+                if (Number.isFinite(total)) {
+                    document.getElementById('total-visits').textContent = total.toLocaleString('en-US');
+                }
+            } catch (error) {
+                // Keep the fallback dash if the public statistics service is unavailable.
+            }
+        }
+
+        updateCounter();
+    })();
+</script>
 
 </body>
 </html>
