@@ -12,8 +12,7 @@ scholar: https://scholar.google.com/citations?hl=zh-CN&user=60Q-Oh8AAAAJ
 bio:
   - 'I am a first-year Ph.D. student at the Hong Kong University of Science and Technology (HKUST),
     advised by <a href="https://justimyhxu.github.io/" target="_blank" rel="noopener">Prof. Yinghao Xu</a>.
-    I received my B.Eng. degree in Software Engineering from Zhejiang University (ZJU).
-    I am also a Research Intern at Ant Group, mentored by <a href="https://xuenan.net/" target="_blank" rel="noopener">Dr. Nan Xue</a>.'
+    I received my B.Eng. degree in Software Engineering from Zhejiang University (ZJU).'
   - 'Previously, I gained research experience at the State Key Lab of CAD&amp;CG
     with <a href="http://www.cad.zju.edu.cn/home/zhpcui/" target="_blank" rel="noopener">Prof. Zhaopeng Cui</a>
     and at the International Design Institute (IDI)
@@ -66,7 +65,7 @@ experience:
     role:   Research Intern
     mentor:     Dr. Nan Xue
     mentor_url: https://xuenan.net/
-    period: "Sep 2025 – Present"
+    period: "Sep 2025 – Jul 2026"
     logo:   images/ant-group.svg
     badge:  [ANT]
     color:  ant
