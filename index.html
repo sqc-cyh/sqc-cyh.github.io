@@ -333,6 +333,33 @@
             text-decoration: none;
         }
 
+        /* News */
+        #news, #publications { scroll-margin-top: 80px; }
+        .news-list { list-style: none; display: grid; gap: 0.9rem; }
+        .news-item {
+            display: grid;
+            grid-template-columns: 3.5rem minmax(0, 1fr);
+            gap: 1rem;
+            align-items: baseline;
+            font-size: 0.92rem;
+            line-height: 1.75;
+        }
+        .news-date { color: var(--text-muted); font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+        .news-text { color: #333; }
+        .news-text strong { font-weight: 600; }
+        .news-highlight { color: #9a5b14; }
+        .publication-distinction {
+            display: inline-block;
+            margin-left: 0.5rem;
+            padding: 2px 8px;
+            border-radius: 5px;
+            background: #fff3df;
+            color: #9a5b14;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-style: normal;
+        }
+
         /* Tags */
         .tag {
             display: inline-flex;
@@ -389,7 +416,11 @@
         .section:nth-of-type(2) { animation-delay: 0.16s; }
 
         /* ════════════ RESPONSIVE ════════════ */
+        @media (max-width: 800px) {
+            .navbar-links li:not(.nav-notes) { display: none; }
+        }
         @media (max-width: 640px) {
+            .news-item { grid-template-columns: 2.7rem minmax(0, 1fr); gap: 0.6rem; }
             .about-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
             .profile-img { width: 150px; height: 150px; margin: 0 auto; }
             .profile-pos { justify-content: center; }
@@ -410,6 +441,7 @@
         <a class="navbar-brand" href="#">Yihang Chen</a>
         <ul class="navbar-links">
             <li><a href="#about">About</a></li>
+            <li><a href="#news">News</a></li>
             <li><a href="#publications">Publications</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#education">Education</a></li>
@@ -469,6 +501,26 @@
 
     
     
+    <section class="section" id="news" aria-labelledby="news-title">
+        <h2 class="section-title" id="news-title">News</h2>
+        <ul class="news-list">
+            
+            <li class="news-item">
+                <time class="news-date" datetime="2026">2026</time>
+                <div class="news-text"><strong>PosePlaner</strong> has been accepted to <strong>NeurIPS 2026</strong>.</div>
+            </li>
+            
+            <li class="news-item">
+                <time class="news-date" datetime="2026">2026</time>
+                <div class="news-text">Two papers, <a href="https://technology.robbyant.com/lingbot-map" target="_blank" rel="noopener">LingBot-Map</a> (<strong class="news-highlight">Best Paper Candidate</strong>) and <a href="https://zju3dv.github.io/MeGAS/" target="_blank" rel="noopener">MeGAS</a>, have been accepted to <strong>ECCV 2026</strong>.</div>
+            </li>
+            
+        </ul>
+    </section>
+    
+
+    
+    
     <section class="section" id="publications">
         <h2 class="section-title">Publications</h2>
         <div class="publication-list">
@@ -484,7 +536,10 @@
                 <div class="publication-body">
                     <a class="publication-title" href="https://arxiv.org/abs/2606.23455" target="_blank" rel="noopener">MeGAS: Thermomechanical Dynamic Gaussian Splatting for Thermophysical Scene Editing</a>
                     <div class="publication-authors">Zesong Yang, Yuanhang Lei, Liyuan Cui, <strong>Yihang Chen</strong>, Jiaer Huang, Boming Zhao, Peter Yichen Chen, Hujun Bao, Zhaopeng Cui</div>
-                    <div class="publication-venue">ECCV 2026</div>
+                    <div class="publication-venue">
+                        ECCV 2026
+                        
+                    </div>
                     <div class="publication-links">
                         <a class="publication-link" href="https://arxiv.org/abs/2606.23455" target="_blank" rel="noopener">
                             <i class="ai ai-arxiv"></i> Paper
@@ -519,7 +574,10 @@
                 <div class="publication-body">
                     <a class="publication-title" href="https://arxiv.org/abs/2604.14141" target="_blank" rel="noopener">Geometric Context Transformer for Streaming 3D Reconstruction</a>
                     <div class="publication-authors">Lin-Zhuo Chen, Jian Gao, <strong>Yihang Chen</strong>, Ka Leong Cheng, Yipengjing Sun, Liangxiao Hu, Nan Xue, Xing Zhu, Yujun Shen, Yao Yao, Yinghao Xu</div>
-                    <div class="publication-venue">ECCV 2026</div>
+                    <div class="publication-venue">
+                        ECCV 2026
+                        <span class="publication-distinction">Best Paper Candidate</span>
+                    </div>
                     <div class="publication-links">
                         <a class="publication-link" href="https://arxiv.org/abs/2604.14141" target="_blank" rel="noopener">
                             <i class="ai ai-arxiv"></i> Paper
@@ -550,7 +608,10 @@
                 <div class="publication-body">
                     <a class="publication-title" href="https://arxiv.org/abs/2601.20540" target="_blank" rel="noopener">Advancing Open-source World Models</a>
                     <div class="publication-authors">Robbyant Team, Zelin Gao, Qiuyu Wang, Yanhong Zeng, Jiapeng Zhu, Ka Leong Cheng, Yixuan Li, Hanlin Wang, Yinghao Xu, Shuailei Ma, <strong>Yihang Chen</strong>, Jie Liu, Yansong Cheng, Yao Yao, Jiayi Zhu, Yihao Meng, Kecheng Zheng, Qingyan Bai, Jingye Chen, Zehong Shen, Yue Yu, Xing Zhu, Yujun Shen, Hao Ouyang</div>
-                    <div class="publication-venue">arXiv preprint arXiv:2601.20540</div>
+                    <div class="publication-venue">
+                        arXiv preprint arXiv:2601.20540
+                        
+                    </div>
                     <div class="publication-links">
                         <a class="publication-link" href="https://arxiv.org/abs/2601.20540" target="_blank" rel="noopener">
                             <i class="ai ai-arxiv"></i> Paper
