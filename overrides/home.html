@@ -333,6 +333,33 @@
             text-decoration: none;
         }
 
+        /* News */
+        #news, #publications { scroll-margin-top: 80px; }
+        .news-list { list-style: none; display: grid; gap: 0.9rem; }
+        .news-item {
+            display: grid;
+            grid-template-columns: 3.5rem minmax(0, 1fr);
+            gap: 1rem;
+            align-items: baseline;
+            font-size: 0.92rem;
+            line-height: 1.75;
+        }
+        .news-date { color: var(--text-muted); font-size: 0.82rem; font-variant-numeric: tabular-nums; }
+        .news-text { color: #333; }
+        .news-text strong { font-weight: 600; }
+        .news-highlight { color: #9a5b14; }
+        .publication-distinction {
+            display: inline-block;
+            margin-left: 0.5rem;
+            padding: 2px 8px;
+            border-radius: 5px;
+            background: #fff3df;
+            color: #9a5b14;
+            font-size: 0.75rem;
+            font-weight: 600;
+            font-style: normal;
+        }
+
         /* Tags */
         .tag {
             display: inline-flex;
@@ -389,7 +416,11 @@
         .section:nth-of-type(2) { animation-delay: 0.16s; }
 
         /* ════════════ RESPONSIVE ════════════ */
+        @media (max-width: 800px) {
+            .navbar-links li:not(.nav-notes) { display: none; }
+        }
         @media (max-width: 640px) {
+            .news-item { grid-template-columns: 2.7rem minmax(0, 1fr); gap: 0.6rem; }
             .about-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
             .profile-img { width: 150px; height: 150px; margin: 0 auto; }
             .profile-pos { justify-content: center; }
@@ -410,6 +441,7 @@
         <a class="navbar-brand" href="#">{{ page.meta.name }}</a>
         <ul class="navbar-links">
             <li><a href="#about">About</a></li>
+            {% if page.meta.news %}<li><a href="#news">News</a></li>{% endif %}
             <li><a href="#publications">Publications</a></li>
             <li><a href="#experience">Experience</a></li>
             <li><a href="#education">Education</a></li>
@@ -465,6 +497,21 @@
         </div>
     </section>
 
+    {# ─── NEWS ─── #}
+    {% if page.meta.news %}
+    <section class="section" id="news" aria-labelledby="news-title">
+        <h2 class="section-title" id="news-title">News</h2>
+        <ul class="news-list">
+            {% for item in page.meta.news %}
+            <li class="news-item">
+                <time class="news-date" datetime="{{ item.date }}">{{ item.date }}</time>
+                <div class="news-text">{{ item.text | safe }}</div>
+            </li>
+            {% endfor %}
+        </ul>
+    </section>
+    {% endif %}
+
     {# ─── PUBLICATIONS ─── #}
     {% if page.meta.publications %}
     <section class="section" id="publications">
@@ -486,7 +533,10 @@
                 <div class="publication-body">
                     <a class="publication-title" href="{{ item.paper_url }}" target="_blank" rel="noopener">{{ item.title }}</a>
                     <div class="publication-authors">{{ item.authors | safe }}</div>
-                    <div class="publication-venue">{{ item.venue }}</div>
+                    <div class="publication-venue">
+                        {{ item.venue }}
+                        {% if item.distinction %}<span class="publication-distinction">{{ item.distinction }}</span>{% endif %}
+                    </div>
                     <div class="publication-links">
                         <a class="publication-link" href="{{ item.paper_url }}" target="_blank" rel="noopener">
                             <i class="ai ai-arxiv"></i> Paper

@@ -18,6 +18,13 @@ bio:
     and at the International Design Institute (IDI)
     with <a href="https://person.zju.edu.cn/sly" target="_blank" rel="noopener">Prof. Lingyun Sun</a>.'
 
+# ── 新闻动态（最新消息在前）──────────────────
+news:
+  - date: "2026"
+    text: '<strong>PosePlaner</strong> has been accepted to <strong>NeurIPS 2026</strong>.'
+  - date: "2026"
+    text: 'Two papers, <a href="https://technology.robbyant.com/lingbot-map" target="_blank" rel="noopener">LingBot-Map</a> (<strong class="news-highlight">Best Paper Candidate</strong>) and <a href="https://zju3dv.github.io/MeGAS/" target="_blank" rel="noopener">MeGAS</a>, have been accepted to <strong>ECCV 2026</strong>.'
+
 # ── 论文成果（顺序即展示顺序）─────────────────
 publications:
   - title: "MeGAS: Thermomechanical Dynamic Gaussian Splatting for Thermophysical Scene Editing"
@@ -35,6 +42,7 @@ publications:
 
   - title: "Geometric Context Transformer for Streaming 3D Reconstruction"
     venue: "ECCV 2026"
+    distinction: "Best Paper Candidate"
     authors: >-
       Lin-Zhuo Chen, Jian Gao, <strong>Yihang Chen</strong>, Ka Leong Cheng, Yipengjing Sun,
       Liangxiao Hu, Nan Xue, Xing Zhu, Yujun Shen, Yao Yao, Yinghao Xu
