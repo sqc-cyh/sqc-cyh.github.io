@@ -21,12 +21,34 @@ bio:
 # ── 新闻动态（最新消息在前）──────────────────
 news:
   - date: "2026"
-    text: '<strong>PosePlaner</strong> has been accepted to <strong>NeurIPS 2026</strong>.'
+    text: '<a href="https://robbyant-research.github.io/PosePlaner/" target="_blank" rel="noopener"><strong>PosePlaner</strong></a> has been accepted to <strong>NeurIPS 2026</strong>.'
   - date: "2026"
     text: 'Two papers, <a href="https://technology.robbyant.com/lingbot-map" target="_blank" rel="noopener">LingBot-Map</a> (<strong class="news-highlight">Best Paper Candidate</strong>) and <a href="https://zju3dv.github.io/MeGAS/" target="_blank" rel="noopener">MeGAS</a>, have been accepted to <strong>ECCV 2026</strong>.'
 
 # ── 论文成果（顺序即展示顺序）─────────────────
 publications:
+  - title: "PosePlaner: Denoising Any Feed-Forward Pose Predictor from Pairwise Planar Geometry"
+    venue: "NeurIPS 2026"
+    authors: >-
+      <strong>Yihang Chen</strong>, Bin Tan, Yujun Shen, Yinghao Xu, Nan Xue
+    image: https://robbyant-research.github.io/PosePlaner/assets/teaser.webp
+    image_alt: PosePlaner refines initial camera poses using cross-view planar correspondences
+    image_style: figure
+    website_url: https://robbyant-research.github.io/PosePlaner/
+
+  - title: "LingBot-Map: Geometric Context Transformer for Streaming 3D Reconstruction"
+    venue: "ECCV 2026"
+    distinction: "Best Paper Candidate"
+    authors: >-
+      Lin-Zhuo Chen, Jian Gao, Shangzhan Zhang, <strong>Yihang Chen</strong>, Ka Leong Cheng,
+      Yipengjing Sun, Liangxiao Hu, Nan Xue, Xing Zhu, Yujun Shen, Yao Yao, Yinghao Xu
+    image: https://raw.githubusercontent.com/Robbyant/lingbot-map/main/assets/teaser.webp
+    image_alt: LingBot-Map streaming reconstruction demo
+    paper_url: https://arxiv.org/abs/2604.14141
+    website_url: https://technology.robbyant.com/lingbot-map
+    code_url: https://github.com/Robbyant/lingbot-map
+    video_url: https://gw.alipayobjects.com/v/huamei_vaouhm/afts/video/rhbsRJeVl1UAAAAAhIAAAAgAfoeUAQBr
+
   - title: "MeGAS: Thermomechanical Dynamic Gaussian Splatting for Thermophysical Scene Editing"
     venue: "ECCV 2026"
     authors: >-
@@ -37,21 +59,7 @@ publications:
     paper_url: https://arxiv.org/abs/2606.23455
     website_url: https://zju3dv.github.io/MeGAS/
     code_url: https://github.com/zju3dv/MeGAS
-    demo_url: https://youtu.be/wAaGvaGSkGU
     video_url: https://zju3dv.github.io/MeGAS/sources/videos/teaser.mp4
-
-  - title: "Geometric Context Transformer for Streaming 3D Reconstruction"
-    venue: "ECCV 2026"
-    distinction: "Best Paper Candidate"
-    authors: >-
-      Lin-Zhuo Chen, Jian Gao, <strong>Yihang Chen</strong>, Ka Leong Cheng, Yipengjing Sun,
-      Liangxiao Hu, Nan Xue, Xing Zhu, Yujun Shen, Yao Yao, Yinghao Xu
-    image: https://raw.githubusercontent.com/Robbyant/lingbot-map/main/assets/teaser.webp
-    image_alt: LingBot-Map streaming reconstruction demo
-    paper_url: https://arxiv.org/abs/2604.14141
-    website_url: https://technology.robbyant.com/lingbot-map
-    code_url: https://github.com/Robbyant/lingbot-map
-    video_url: https://gw.alipayobjects.com/v/huamei_vaouhm/afts/video/rhbsRJeVl1UAAAAAhIAAAAgAfoeUAQBr
 
   - title: "Advancing Open-source World Models"
     venue: "arXiv preprint arXiv:2601.20540"

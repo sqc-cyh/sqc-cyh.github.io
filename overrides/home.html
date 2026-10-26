@@ -285,7 +285,15 @@
             object-fit: cover;
         }
         .publication-media img { transition: transform 0.25s ease; }
+        .publication-media-figure {
+            align-self: start;
+            background: #fff;
+            box-shadow: none;
+        }
+        /* Fill the thumbnail by cropping the teaser's blank side margins. */
+        .publication-media-figure img { object-position: 52% center; }
         .publication-media:hover img { transform: scale(1.035); }
+        .publication-media-figure:hover img { transform: none; }
         .publication-body { min-width: 0; padding: 0.03rem 0; }
         .publication-title {
             color: #111;
@@ -526,21 +534,23 @@
                     </video>
                 </div>
                 {% else %}
-                <a class="publication-media" href="{{ item.website_url or item.paper_url }}" target="_blank" rel="noopener" aria-label="Open preview for {{ item.title }}">
+                <a class="publication-media{% if item.image_style == 'figure' %} publication-media-figure{% endif %}" href="{{ item.website_url or item.paper_url }}" target="_blank" rel="noopener" aria-label="Open preview for {{ item.title }}">
                     <img src="{{ item.image }}" alt="{{ item.image_alt or item.title }}" loading="lazy">
                 </a>
                 {% endif %}
                 <div class="publication-body">
-                    <a class="publication-title" href="{{ item.paper_url }}" target="_blank" rel="noopener">{{ item.title }}</a>
+                    <a class="publication-title" href="{{ item.paper_url or item.website_url }}" target="_blank" rel="noopener">{{ item.title }}</a>
                     <div class="publication-authors">{{ item.authors | safe }}</div>
                     <div class="publication-venue">
                         {{ item.venue }}
                         {% if item.distinction %}<span class="publication-distinction">{{ item.distinction }}</span>{% endif %}
                     </div>
                     <div class="publication-links">
+                        {% if item.paper_url %}
                         <a class="publication-link" href="{{ item.paper_url }}" target="_blank" rel="noopener">
                             <i class="ai ai-arxiv"></i> Paper
                         </a>
+                        {% endif %}
                         {% if item.website_url %}
                         <a class="publication-link" href="{{ item.website_url }}" target="_blank" rel="noopener">
                             <i class="fas fa-globe"></i> Website
