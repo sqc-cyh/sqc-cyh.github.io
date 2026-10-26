@@ -285,7 +285,15 @@
             object-fit: cover;
         }
         .publication-media img { transition: transform 0.25s ease; }
+        .publication-media-figure {
+            align-self: start;
+            background: #fff;
+            box-shadow: none;
+        }
+        /* Fill the thumbnail by cropping the teaser's blank side margins. */
+        .publication-media-figure img { object-position: 52% center; }
         .publication-media:hover img { transform: scale(1.035); }
+        .publication-media-figure:hover img { transform: none; }
         .publication-body { min-width: 0; padding: 0.03rem 0; }
         .publication-title {
             color: #111;
@@ -507,7 +515,7 @@
             
             <li class="news-item">
                 <time class="news-date" datetime="2026">2026</time>
-                <div class="news-text"><strong>PosePlaner</strong> has been accepted to <strong>NeurIPS 2026</strong>.</div>
+                <div class="news-text"><a href="https://robbyant-research.github.io/PosePlaner/" target="_blank" rel="noopener"><strong>PosePlaner</strong></a> has been accepted to <strong>NeurIPS 2026</strong>.</div>
             </li>
             
             <li class="news-item">
@@ -527,6 +535,68 @@
             
             <article class="publication">
                 
+                <a class="publication-media publication-media-figure" href="https://robbyant-research.github.io/PosePlaner/" target="_blank" rel="noopener" aria-label="Open preview for PosePlaner: Denoising Any Feed-Forward Pose Predictor from Pairwise Planar Geometry">
+                    <img src="https://robbyant-research.github.io/PosePlaner/assets/teaser.webp" alt="PosePlaner refines initial camera poses using cross-view planar correspondences" loading="lazy">
+                </a>
+                
+                <div class="publication-body">
+                    <a class="publication-title" href="https://robbyant-research.github.io/PosePlaner/" target="_blank" rel="noopener">PosePlaner: Denoising Any Feed-Forward Pose Predictor from Pairwise Planar Geometry</a>
+                    <div class="publication-authors"><strong>Yihang Chen</strong>, Bin Tan, Yujun Shen, Yinghao Xu, Nan Xue</div>
+                    <div class="publication-venue">
+                        NeurIPS 2026
+                        
+                    </div>
+                    <div class="publication-links">
+                        
+                        
+                        <a class="publication-link" href="https://robbyant-research.github.io/PosePlaner/" target="_blank" rel="noopener">
+                            <i class="fas fa-globe"></i> Website
+                        </a>
+                        
+                        
+                        
+                    </div>
+                </div>
+            </article>
+            
+            <article class="publication">
+                
+                <div class="publication-media publication-video" aria-label="Autoplaying demo for LingBot-Map: Geometric Context Transformer for Streaming 3D Reconstruction">
+                    <video autoplay muted loop playsinline preload="metadata" poster="https://raw.githubusercontent.com/Robbyant/lingbot-map/main/assets/teaser.webp" aria-label="Autoplaying demo for LingBot-Map: Geometric Context Transformer for Streaming 3D Reconstruction">
+                        <source src="https://gw.alipayobjects.com/v/huamei_vaouhm/afts/video/rhbsRJeVl1UAAAAAhIAAAAgAfoeUAQBr" type="video/mp4">
+                    </video>
+                </div>
+                
+                <div class="publication-body">
+                    <a class="publication-title" href="https://arxiv.org/abs/2604.14141" target="_blank" rel="noopener">LingBot-Map: Geometric Context Transformer for Streaming 3D Reconstruction</a>
+                    <div class="publication-authors">Lin-Zhuo Chen, Jian Gao, Shangzhan Zhang, <strong>Yihang Chen</strong>, Ka Leong Cheng, Yipengjing Sun, Liangxiao Hu, Nan Xue, Xing Zhu, Yujun Shen, Yao Yao, Yinghao Xu</div>
+                    <div class="publication-venue">
+                        ECCV 2026
+                        <span class="publication-distinction">Best Paper Candidate</span>
+                    </div>
+                    <div class="publication-links">
+                        
+                        <a class="publication-link" href="https://arxiv.org/abs/2604.14141" target="_blank" rel="noopener">
+                            <i class="ai ai-arxiv"></i> Paper
+                        </a>
+                        
+                        
+                        <a class="publication-link" href="https://technology.robbyant.com/lingbot-map" target="_blank" rel="noopener">
+                            <i class="fas fa-globe"></i> Website
+                        </a>
+                        
+                        
+                        <a class="publication-link" href="https://github.com/Robbyant/lingbot-map" target="_blank" rel="noopener">
+                            <i class="fab fa-github"></i> Code
+                        </a>
+                        
+                        
+                    </div>
+                </div>
+            </article>
+            
+            <article class="publication">
+                
                 <div class="publication-media publication-video" aria-label="Autoplaying demo for MeGAS: Thermomechanical Dynamic Gaussian Splatting for Thermophysical Scene Editing">
                     <video autoplay muted loop playsinline preload="metadata" poster="https://zju3dv.github.io/MeGAS/sources/images/teaser.png" aria-label="Autoplaying demo for MeGAS: Thermomechanical Dynamic Gaussian Splatting for Thermophysical Scene Editing">
                         <source src="https://zju3dv.github.io/MeGAS/sources/videos/teaser.mp4" type="video/mp4">
@@ -541,9 +611,11 @@
                         
                     </div>
                     <div class="publication-links">
+                        
                         <a class="publication-link" href="https://arxiv.org/abs/2606.23455" target="_blank" rel="noopener">
                             <i class="ai ai-arxiv"></i> Paper
                         </a>
+                        
                         
                         <a class="publication-link" href="https://zju3dv.github.io/MeGAS/" target="_blank" rel="noopener">
                             <i class="fas fa-globe"></i> Website
@@ -551,44 +623,6 @@
                         
                         
                         <a class="publication-link" href="https://github.com/zju3dv/MeGAS" target="_blank" rel="noopener">
-                            <i class="fab fa-github"></i> Code
-                        </a>
-                        
-                        
-                        <a class="publication-link" href="https://youtu.be/wAaGvaGSkGU" target="_blank" rel="noopener">
-                            <i class="fas fa-circle-play"></i> Demo
-                        </a>
-                        
-                    </div>
-                </div>
-            </article>
-            
-            <article class="publication">
-                
-                <div class="publication-media publication-video" aria-label="Autoplaying demo for Geometric Context Transformer for Streaming 3D Reconstruction">
-                    <video autoplay muted loop playsinline preload="metadata" poster="https://raw.githubusercontent.com/Robbyant/lingbot-map/main/assets/teaser.webp" aria-label="Autoplaying demo for Geometric Context Transformer for Streaming 3D Reconstruction">
-                        <source src="https://gw.alipayobjects.com/v/huamei_vaouhm/afts/video/rhbsRJeVl1UAAAAAhIAAAAgAfoeUAQBr" type="video/mp4">
-                    </video>
-                </div>
-                
-                <div class="publication-body">
-                    <a class="publication-title" href="https://arxiv.org/abs/2604.14141" target="_blank" rel="noopener">Geometric Context Transformer for Streaming 3D Reconstruction</a>
-                    <div class="publication-authors">Lin-Zhuo Chen, Jian Gao, <strong>Yihang Chen</strong>, Ka Leong Cheng, Yipengjing Sun, Liangxiao Hu, Nan Xue, Xing Zhu, Yujun Shen, Yao Yao, Yinghao Xu</div>
-                    <div class="publication-venue">
-                        ECCV 2026
-                        <span class="publication-distinction">Best Paper Candidate</span>
-                    </div>
-                    <div class="publication-links">
-                        <a class="publication-link" href="https://arxiv.org/abs/2604.14141" target="_blank" rel="noopener">
-                            <i class="ai ai-arxiv"></i> Paper
-                        </a>
-                        
-                        <a class="publication-link" href="https://technology.robbyant.com/lingbot-map" target="_blank" rel="noopener">
-                            <i class="fas fa-globe"></i> Website
-                        </a>
-                        
-                        
-                        <a class="publication-link" href="https://github.com/Robbyant/lingbot-map" target="_blank" rel="noopener">
                             <i class="fab fa-github"></i> Code
                         </a>
                         
@@ -613,9 +647,11 @@
                         
                     </div>
                     <div class="publication-links">
+                        
                         <a class="publication-link" href="https://arxiv.org/abs/2601.20540" target="_blank" rel="noopener">
                             <i class="ai ai-arxiv"></i> Paper
                         </a>
+                        
                         
                         <a class="publication-link" href="https://technology.robbyant.com/lingbot-world" target="_blank" rel="noopener">
                             <i class="fas fa-globe"></i> Website
