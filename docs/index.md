@@ -34,6 +34,7 @@ publications:
     image: https://robbyant-research.github.io/PosePlaner/assets/teaser.webp
     image_alt: PosePlaner refines initial camera poses using cross-view planar correspondences
     image_style: figure
+    paper_url: https://arxiv.org/abs/2610.34845
     website_url: https://robbyant-research.github.io/PosePlaner/
 
   - title: "LingBot-Map: Geometric Context Transformer for Streaming 3D Reconstruction"
