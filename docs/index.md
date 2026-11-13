@@ -27,6 +27,17 @@ news:
 
 # ── 论文成果（顺序即展示顺序）─────────────────
 publications:
+  - title: "Map2SLAM: From Streaming Map Prediction to Real-Time SLAM"
+    venue: "arXiv preprint arXiv:2611.11169"
+    authors: >-
+      Jian Gao, Lin-Zhuo Chen, <strong>Yihang Chen</strong>, Jiagang Chen, Jiacheng Dong,
+      Xun Cao, Nan Xue, Yinghao Xu, Yao Yao
+    image: images/map2slam-kitti.jpg
+    image_alt: Map2SLAM reconstruction and camera trajectory on KITTI sequence 00
+    paper_url: https://arxiv.org/abs/2611.11169
+    website_url: https://robbyant-research.github.io/Map2SLAM/
+    video_url: videos/map2slam-kitti.mp4
+
   - title: "PosePlaner: Denoising Any Feed-Forward Pose Predictor from Pairwise Planar Geometry"
     venue: "NeurIPS 2026"
     authors: >-
