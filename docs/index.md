@@ -4,7 +4,7 @@ statistics: false
 
 # ── 基本信息 ─────────────────────────────────
 name:   Yihang Chen
-email:  yihang.chen@zju.edu.cn
+email:  shiqingchuan888@gmail.com
 github: sqc-cyh
 scholar: https://scholar.google.com/citations?hl=zh-CN&user=60Q-Oh8AAAAJ
 

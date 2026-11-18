@@ -147,7 +147,7 @@ extra:
     - icon: fontawesome/brands/github
       link: https://github.com/sqc-cyh
     - icon: fontawesome/solid/paper-plane
-      link: mailto:<1076219827@qq.com> #联系方式
+      link: mailto:shiqingchuan888@gmail.com #联系方式
 extra_css:
   - stylesheets/extra.css
   - https://cdn.jsdelivr.net/npm/lxgw-wenkai-webfont@1.1.0/style.css
