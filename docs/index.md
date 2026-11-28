@@ -34,6 +34,7 @@ publications:
       Nan Xue, Xing Zhu, Yujun Shen, Yinghao Xu
     image: https://raw.githubusercontent.com/Robbyant/lingbot-map-v2/main/assets/demo-preview.jpg
     image_alt: LingBot-Map 2.0 streaming 3D reconstruction and camera trajectory
+    paper_url: https://github.com/Robbyant/lingbot-map-v2/blob/main/docs/lingbot-map-v2_paper.pdf
     website_url: https://technology.robbyant.com/lingbot-map-v2
     code_url: https://github.com/Robbyant/lingbot-map-v2
 
