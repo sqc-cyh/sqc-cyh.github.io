@@ -534,12 +534,12 @@
                     </video>
                 </div>
                 {% else %}
-                <a class="publication-media{% if item.image_style == 'figure' %} publication-media-figure{% endif %}" href="{{ item.website_url or item.paper_url }}" target="_blank" rel="noopener" aria-label="Open preview for {{ item.title }}">
+                <a class="publication-media{% if item.image_style == 'figure' %} publication-media-figure{% endif %}" href="{{ item.website_url or item.paper_url or item.code_url }}" target="_blank" rel="noopener" aria-label="Open preview for {{ item.title }}">
                     <img src="{{ item.image }}" alt="{{ item.image_alt or item.title }}" loading="lazy">
                 </a>
                 {% endif %}
                 <div class="publication-body">
-                    <a class="publication-title" href="{{ item.paper_url or item.website_url }}" target="_blank" rel="noopener">{{ item.title }}</a>
+                    <a class="publication-title" href="{{ item.paper_url or item.website_url or item.code_url }}" target="_blank" rel="noopener">{{ item.title }}</a>
                     <div class="publication-authors">{{ item.authors | safe }}</div>
                     <div class="publication-venue">
                         {{ item.venue }}

@@ -27,6 +27,16 @@ news:
 
 # ── 论文成果（顺序即展示顺序）─────────────────
 publications:
+  - title: "LingBot-Map 2.0: Reconsolidatable Streaming 3D Reconstruction"
+    venue: "Technical report, 2026"
+    authors: >-
+      <strong>Yihang Chen</strong>, Lin-Zhuo Chen, Jian Gao, Jiacheng Dong, Yao Yao,
+      Nan Xue, Xing Zhu, Yujun Shen, Yinghao Xu
+    image: https://raw.githubusercontent.com/Robbyant/lingbot-map-v2/main/assets/demo-preview.jpg
+    image_alt: LingBot-Map 2.0 streaming 3D reconstruction and camera trajectory
+    website_url: https://technology.robbyant.com/lingbot-map-v2
+    code_url: https://github.com/Robbyant/lingbot-map-v2
+
   - title: "Map2SLAM: From Streaming Map Prediction to Real-Time SLAM"
     venue: "arXiv preprint arXiv:2611.11169"
     authors: >-
